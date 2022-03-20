@@ -4,9 +4,9 @@ MOUNT_POINT="/System/Volumes/Data"	#Your mount point to check
 WARN_MESSEGE_VALUE=50 			#percentage
 CRITICAL_MESSEGE_VALUE=80 		#percentage
 
-check_messege=`df $MOUNT_POINT` 
+check_messege=`df $MOUNT_POINT | tail -n 1` 
 set -- $check_messege
-used_disk_proc=${15}
+used_disk_proc=${5}
 used_disk=`echo $used_disk_proc | sed 's/\%//'`
 
 if [ $used_disk -ge $CRITICAL_MESSEGE_VALUE ]
